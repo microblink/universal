@@ -1,5 +1,5 @@
 #pragma once
-// number_traits.hpp: utility functions for working with numeric_limits<> 
+// number_traits.hpp: utility functions for working with numeric_limits<>
 //
 // Copyright (C) 2017-2022 Stillwater Supercomputing, Inc.
 //
@@ -12,7 +12,7 @@ template<typename Scalar, size_t ColumnWidth = 40>
 void numberTraits(std::ostream& ostr) {
 	using namespace std;
 
-	ostr << "std::numeric_limits< " << typeid(Scalar).name() << " >\n";
+	// ostr << "std::numeric_limits< " << typeid(Scalar).name() << " >\n";
 	ostr << "min exponent       " << setw(ColumnWidth) << numeric_limits<Scalar>::min_exponent << '\n';
 	ostr << "max exponent       " << setw(ColumnWidth) << numeric_limits<Scalar>::max_exponent << '\n';
 	ostr << "radix              " << setw(ColumnWidth) << numeric_limits<Scalar>::radix << '\n';
@@ -34,8 +34,8 @@ template<typename Type1, typename Type2, size_t ColumnWidth = 30>
 void compareNumberTraits(std::ostream& ostr) {
 	using namespace std;
 
-	ostr << "comparing numeric_limits between " << typeid(Type1).name() << " and " << typeid(Type2).name() << '\n';
-	ostr << "                " << setw(ColumnWidth) << typeid(Type1).name() << " vs " << setw(ColumnWidth) << typeid(Type2).name() << '\n';
+	// ostr << "comparing numeric_limits between " << typeid(Type1).name() << " and " << typeid(Type2).name() << '\n';
+	// ostr << "                " << setw(ColumnWidth) << typeid(Type1).name() << " vs " << setw(ColumnWidth) << typeid(Type2).name() << '\n';
 	ostr << "min exponent    " << setw(ColumnWidth) << numeric_limits< Type1 >::min_exponent << " vs " << setw(ColumnWidth) << numeric_limits< Type2 >::min_exponent << '\n';
 	ostr << "max exponent    " << setw(ColumnWidth) << numeric_limits< Type1 >::max_exponent << " vs " << setw(ColumnWidth) << numeric_limits< Type2 >::max_exponent << '\n';
 	ostr << "radix           " << setw(ColumnWidth) << numeric_limits< Type1 >::radix << " vs " << setw(ColumnWidth) << numeric_limits< Type2 >::radix << '\n';
@@ -57,8 +57,8 @@ template<typename Type1, typename Type2, typename Type3, size_t ColumnWidth = 30
 void threeWayCompareNumberTraits(std::ostream& ostr) {
 	using namespace std;
 
-	ostr << "comparing numeric_limits between " << typeid(Type1).name() << " and " << typeid(Type2).name() << " and " << typeid(Type3).name() << '\n';
-	ostr << "                " << setw(ColumnWidth) << typeid(Type1).name() << " vs " << setw(ColumnWidth) << typeid(Type2).name() << " vs " << setw(ColumnWidth) << typeid(Type3).name() << '\n';
+	// ostr << "comparing numeric_limits between " << typeid(Type1).name() << " and " << typeid(Type2).name() << " and " << typeid(Type3).name() << '\n';
+	// ostr << "                " << setw(ColumnWidth) << typeid(Type1).name() << " vs " << setw(ColumnWidth) << typeid(Type2).name() << " vs " << setw(ColumnWidth) << typeid(Type3).name() << '\n';
 	ostr << "min exponent    " << setw(ColumnWidth) << numeric_limits< Type1 >::min_exponent    << setw(ColumnWidth) << numeric_limits< Type2 >::min_exponent    << setw(ColumnWidth) << numeric_limits< Type3 >::min_exponent << '\n';
 	ostr << "max exponent    " << setw(ColumnWidth) << numeric_limits< Type1 >::max_exponent    << setw(ColumnWidth) << numeric_limits< Type2 >::max_exponent    << setw(ColumnWidth) << numeric_limits< Type3 >::max_exponent << '\n';
 	ostr << "radix           " << setw(ColumnWidth) << numeric_limits< Type1 >::radix           << setw(ColumnWidth) << numeric_limits< Type2 >::radix           << setw(ColumnWidth) << numeric_limits< Type3 >::radix << '\n';

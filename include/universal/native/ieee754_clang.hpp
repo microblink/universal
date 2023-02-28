@@ -57,29 +57,29 @@ public:
 };
 
 // CLang long double = 80 bit extended precision
-// 
+//
 // IEEE-754 parameter constexpressions for long double
-template<>
-class ieee754_parameter<long double> {
-public:
-	static constexpr int      nbits    = 80;
-	static constexpr uint64_t smask    = 0x0000'0000'0000'8000ull; // mask for the top half
-	static constexpr int      ebits    = 15;
-	static constexpr int      bias     = 16383;
-	static constexpr uint64_t emask    = 0x0000'0000'0000'7FFFull; // mask for the top half
-	static constexpr uint64_t eallset  = 0x7FFF;
-	static constexpr int      fbits    = 63;
-	static constexpr uint64_t hmask    = 0x8000'0000'0000'0000ull; // mask for the bottom half
-	static constexpr uint64_t fmask    = 0x7FFF'FFFF'FFFF'FFFFull; // mask for the bottom half
-	static constexpr uint64_t hfmask   = 0xFFFF'FFFF'FFFF'FFFFull; // mask for the bottom half
-	static constexpr uint64_t fmsb     = 0x8000'0000'0000'0000ull;
-	static constexpr uint64_t qnanmask = 0x7FF8'0000'0000'0000ull;
-	static constexpr uint64_t snanmask = 0x7FF4'0000'0000'0000ull;
-	static constexpr long double minNormal       = 3.3621031431120935062626778173218e-4932l; // == 2^-16382
-	static constexpr long double minSubnormal    = 3.6451995318824746025284059336194e-4951l; // == 2^-16445
-	static constexpr int         minNormalExp    = -16382;
-	static constexpr int         minSubnormalExp = -16445;
-};
+// template<>
+// class ieee754_parameter<long double> {
+// public:
+// 	static constexpr int      nbits    = 80;
+// 	static constexpr uint64_t smask    = 0x0000'0000'0000'8000ull; // mask for the top half
+// 	static constexpr int      ebits    = 15;
+// 	static constexpr int      bias     = 16383;
+// 	static constexpr uint64_t emask    = 0x0000'0000'0000'7FFFull; // mask for the top half
+// 	static constexpr uint64_t eallset  = 0x7FFF;
+// 	static constexpr int      fbits    = 63;
+// 	static constexpr uint64_t hmask    = 0x8000'0000'0000'0000ull; // mask for the bottom half
+// 	static constexpr uint64_t fmask    = 0x7FFF'FFFF'FFFF'FFFFull; // mask for the bottom half
+// 	static constexpr uint64_t hfmask   = 0xFFFF'FFFF'FFFF'FFFFull; // mask for the bottom half
+// 	static constexpr uint64_t fmsb     = 0x8000'0000'0000'0000ull;
+// 	static constexpr uint64_t qnanmask = 0x7FF8'0000'0000'0000ull;
+// 	static constexpr uint64_t snanmask = 0x7FF4'0000'0000'0000ull;
+// 	static constexpr long double minNormal       = 3.3621031431120935062626778173218e-4932l; // == 2^-16382
+// 	static constexpr long double minSubnormal    = 3.6451995318824746025284059336194e-4951l; // == 2^-16445
+// 	static constexpr int         minNormalExp    = -16382;
+// 	static constexpr int         minSubnormalExp = -16445;
+// };
 
 }} // namespace sw::universal
 

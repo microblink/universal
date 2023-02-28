@@ -35,19 +35,19 @@ inline void extractFields(long double value, bool& s, uint64_t& rawExponentBits,
 }
 
 // ieee_components returns a tuple of sign, exponent, and fraction.
-inline std::tuple<bool, int, std::uint64_t> ieee_components(long double fp) {
-	static_assert(std::numeric_limits<double>::is_iec559,
-		"This function only works when double complies with IEC 559 (IEEE 754)");
-	static_assert(sizeof(long double) == 16, "This function only works when double is 80 bit.");
-
-	long_double_decoder dd{ fp }; // initializes the first member of the union
-	// Reading inactive union parts is forbidden in constexpr :-(
-	return std::make_tuple<bool, int, std::uint64_t>(
-		static_cast<bool>(dd.parts.sign),
-		static_cast<int>(dd.parts.exponent),
-		static_cast<std::uint64_t>(dd.parts.fraction)
-		);
-}
+// inline std::tuple<bool, int, std::uint64_t> ieee_components(long double fp) {
+// 	static_assert(std::numeric_limits<double>::is_iec559,
+// 		"This function only works when double complies with IEC 559 (IEEE 754)");
+// 	static_assert(sizeof(long double) == 16, "This function only works when double is 80 bit.");
+//
+// 	long_double_decoder dd{ fp }; // initializes the first member of the union
+// 	// Reading inactive union parts is forbidden in constexpr :-(
+// 	return std::make_tuple<bool, int, std::uint64_t>(
+// 		static_cast<bool>(dd.parts.sign),
+// 		static_cast<int>(dd.parts.exponent),
+// 		static_cast<std::uint64_t>(dd.parts.fraction)
+// 		);
+// }
 
 // specialization for IEEE long double precision floats
 inline std::string to_base2_scientific(long double number) {
@@ -115,10 +115,10 @@ inline std::string to_triple(long double number) {
 	// print sign bit
 	s << '(' << (decoder.parts.sign ? '-' : '+') << ',';
 
-	// exponent 
-	// the exponent value used in the arithmetic is the exponent shifted by a bias 
-	// for the IEEE 754 binary32 case, an exponent value of 127 represents the actual zero 
-	// (i.e. for 2^(e ¿ 127) to be one, e must be 127). 
+	// exponent
+	// the exponent value used in the arithmetic is the exponent shifted by a bias
+	// for the IEEE 754 binary32 case, an exponent value of 127 represents the actual zero
+	// (i.e. for 2^(e ¿ 127) to be one, e must be 127).
 	// Exponents range from ¿126 to +127 because exponents of ¿127 (all 0s) and +128 (all 1s) are reserved for special numbers.
 	if (decoder.parts.exponent == 0) {
 		s << "exp=0,";
